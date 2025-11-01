@@ -5,11 +5,11 @@ window.questionsByTopic.tema1 = [
     q: "¿Qué es el muestreo en el proceso de digitalización de una imagen?",
     opts: [
       "El muestreo es el proceso de asignar colores a los píxeles de la imagen.",
-      "El muestreo es el proceso de dividir una imagen continua en una serie de puntos discretos llamados píxeles, determinando así el número de píxeles que tendrá la imagen digitalizada.",
       "El muestreo es el proceso de ajustar la resolución de una imagen para mejorar su calidad.",
-      "El muestreo es el proceso de dividir una imagen por colores y grados de intensidad, determinando la escala de grises o colores de dicha imagen."
+      "El muestreo es el proceso de dividir una imagen por colores y grados de intensidad, determinando la escala de grises o colores de dicha imagen.",
+      "El muestreo es el proceso de dividir una imagen continua en una serie de puntos discretos, determinando así el número de píxeles que tendrá la imagen.",
     ],
-    correct: [1]
+    correct: [3]
   },
   {
     q: "¿Qué es la cuantificación en una imagen digital?",
@@ -52,14 +52,14 @@ window.questionsByTopic.tema1 = [
     correct: [2]
   },
   {
-    q: "¿Cómo puede el histograma indicar si una imagen tiene buen contraste?",
+    q: "¿Cómo se calcula el histograma de una imagen en escala de grises?",
     opts: [
-      "Un histograma con valores concentrados en una sola intensidad indica buen contraste.",
-      "Un histograma con picos muy altos indica buen contraste.",
-      "Un histograma bien distribuido a través de todo el rango de intensidades indica un buen contraste.",
-      "Un histograma plano indica buen contraste."
+      "Contando el número de píxeles para cada nivel de intensidad y representándolo en un gráfico.",
+      "Sumando los valores de intensidad de todos los píxeles y dividiéndolo por el número total de píxeles.",
+      "Dividiendo la imagen en regiones y calculando la media de intensidad para cada región.",
+      "Aplicando un filtro de suavizado a la imagen y luego contando los niveles de intensidad."
     ],
-    correct: [2]
+    correct: [0]
   },
   {
     q: "¿Cuál es la principal diferencia entre el ruido aditivo y el multiplicativo en una imagen?",
@@ -75,31 +75,31 @@ window.questionsByTopic.tema1 = [
     q: "¿Qué tipo de ruido es modelado por una distribución normal y qué características tiene?",
     opts: [
       "Ruido impulsivo, caracterizado por picos repentinos en la intensidad de los píxeles.",
-      "Ruido gaussiano, caracterizado por fluctuaciones aleatorias con una media \( \mu \) y una desviación estándar \( \sigma \).",
       "Ruido de saltos, que introduce variaciones grandes y abruptas en la imagen.",
-      "Ruido uniforme, donde los valores de los píxeles se distribuyen de manera equitativa."
+      "Ruido uniforme, donde los valores de los píxeles se distribuyen de manera equitativa.",
+      "Ruido gaussiano, caracterizado por fluctuaciones aleatorias con una media \( \mu \) y una desviación estándar \( \sigma \)."
     ],
-    correct: [1]
+    correct: [3]
   },
   {
     q: "¿Qué condiciones deben cumplirse para que dos píxeles sean considerados vecinos directos?",
     opts: [
       "Deben estar a una distancia de dos píxeles uno del otro.",
       "Deben compartir una esquina.",
-      "Deben compartir una arista (estar adyacentes horizontal o verticalmente).",
-      "Deben tener valores de intensidad similares."
+      "Deben tener valores de intensidad similares.",
+      "Deben compartir una arista."
     ],
-    correct: [2]
+    correct: [3]
   },
   {
     q: "Explica qué significa que dos píxeles estén conectados según el criterio de conectividad-8.",
     opts: [
-      "Dos píxeles son conectados solo si están alineados horizontalmente o verticalmente.",
-      "Dos píxeles son conectados si comparten una esquina.",
-      "Dos píxeles son conectados si comparten una esquina o una arista.",
-      "Dos píxeles son conectados si tienen el mismo valor de intensidad."
+      "Dos píxeles están conectados solo si están alineados horizontalmente o verticalmente.",
+      "Dos píxeles están conectados si solo comparten una esquina y satisfacen un criterio de similitud.",
+      "Dos píxeles están conectados si comparten una arista y satisfacen un criterio de similitud.",
+      "Dos píxeles están conectados si son vecinos directos o indirectos y satisfacen un criterio de similitud."
     ],
-    correct: [2]
+    correct: [3]
   },
 
   // Preguntas de respuesta corta
@@ -153,7 +153,7 @@ window.questionsByTopic.tema1 = [
       "Utilizando la fórmula \( R = L + C, G = M, B = Y \)",
       "Ninguna de las anteriores."
     ],
-    correct: [3]
+    correct: [0]
   },
 
   // Preguntas sobre el histograma de una imagen
@@ -210,6 +210,64 @@ window.questionsByTopic.tema1 = [
       "Los vecinos indirectos tienen los mismos valores de intensidad."
     ],
     correct: [0]
-  }
+  },
+  {
+    q: "¿Qué es el contraste?",
+    opts: [
+      "La diferencia en intensidad entre los píxeles adyacentes.",
+      "La cantidad de detalles en una imagen.",
+      "La relacion entre la intensidad media de los objetos en la imagen y la instensidad media del fondo de la imagen.",
+      "Ninguna de las anteriores."
+    ],
+    correct: [2]
+  },
+  {
+    q: "¿Qué es el ruido en una imagen digital?",
+    opts: [
+      "Una distorsión no deseada que afecta la calidad de la imagen.",
+      "Un filtro aplicado para mejorar la calidad de la imagen.",
+      "Pequeñas variaciones aleatorias en los valores de intensidad de los píxeles.",
+      "Ninguna de las anteriores."
+    ],
+    correct: [0, 2]
+  },
+  {
+    q: "¿Qué afirmaciones son falsas?",
+    opts: [ 
+      "Conectividad-8 implica conectividad-4",
+      "Conectividad-m implica conectividad-8",
+      "Conectividad-8 implica conectividad-m",
+      "Conectividad-m implica conectividad-4"
+    ],
+    correct: [1]
+  },
+  {
+    q: "¿Qué descripciones entran dentro de la conectividad-m en imágenes digitales?",
+    opts: [
+      "Cumplen criterio de similitud y son vecinos directos",
+      "Cumplen criterio de similitud y son vecinos indirectos",
+      "Son vecinos directos o indirectos y cumplen criterio de similitud",
+      "Cumplen criterio de similitud, son vecinos indirectos y los vecinos compartidos no satisfacen la restricción de similitud."
+    ],
+    correct: [0, 3]
+  },
+  {
+    q: "Tenemos una imagen binaria 5x5, donde todos los píxeles valen 0 excepto los píxeles (1,0) i (4,2) que valen 1",
+    opts: [
+      "Cumplen que d4((1,0),(4,2))= 3",
+      "Cumplen que d8((1,0),(4,2))= 3",
+      "Tienen conectividad-4.",
+      "Tienen conectividad-m."
+    ],
+    correct: [1]
+  },
+  {q: "Tenemos una imagen binaria 4x4, donde todos los píxeles valen 0 excepto los píxeles (1,1), (1,2), (2,1)i (2,2) que valen 1. Los pixeles (1,1) i (2,2):",
+    opts: [
+      "Tienen conectividad-4 i conectividad-8.",
+      "Tienen conectividad-4.",
+      "Tienen conectividad-8.",
+      "Tienen conectividad-m."
+    ],
+    correct: [2]}
 ];
 
