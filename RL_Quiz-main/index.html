@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Vision Quiz</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🧠 COMPUTER VISION QUIZ 🧠</h1>
+    <p>PRÁCTICA PARA TU<br>EXAMEN DE VISIÓN POR COMPUTADOR</p>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-label">PROGRESO</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress">0%</div>
+    </div>
+  </div>
+
+  <div class="quiz-card" id="quiz-container">
+    <div style="font-family: 'Inter', sans-serif; color: var(--text-secondary); text-align: center; padding: 2rem;">
+      Cargando...
+    </div>
+  </div>
+</div>
+
+  <!-- IMPORTANTE: Cargar en este orden exacto -->
+  <!-- 1. Primero los temas -->
+  <script src="./questions-data.js"></script>
+  
+  <!-- 2. Luego todas las preguntas de cada tema -->
+  <script src="./tema1.js"></script>
+  <script src="./tema2.js"></script>
+  <script src="./tema3.js"></script>
+  <script src="./tema4.js"></script>
+  <script src="./tema5.js"></script>
+  <script src="./tema6.js"></script>
+  <script src="./tema7.js"></script>
+  
+  <!-- 3. Finalmente el script principal -->
+  <script src="./script.js"></script>
+</body>
+</html>
