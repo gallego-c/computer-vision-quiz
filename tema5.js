@@ -1,385 +1,303 @@
 window.questionsByTopic = window.questionsByTopic || {};
 window.questionsByTopic.tema5 = [
     {
-      "q": "¿Qué sucede cuando aplicamos el operador **dilatación** a una imagen binaria?",
+      "q": "Dada una imagen en escala de grises con pequeñas manchas oscuras sobre un fondo claro, queremos eliminarlas sin afectar las estructuras grandes. ¿Cuál es el procedimiento más adecuado?",
       "opts": [
-        "Las áreas blancas se expanden, aumentando el tamaño de los objetos presentes.",
-        "Las áreas negras se expanden, aumentando el tamaño de los objetos oscuros.",
-        "Elimina todos los detalles oscuros y pequeños.",
-        "Reduce la intensidad de las zonas brillantes."
+        "Aplicar erosión seguida de dilatación, porque la erosión elimina detalles oscuros.",
+        "Aplicar clausura, porque elimina detalles oscuros más pequeños que el elemento estructural sin aclarar uniformemente la imagen.",
+        "Aplicar apertura, porque suaviza la imagen eliminando ruido.",
+        "Aplicar el gradiente morfológico externo para realzar las manchas y luego restarlas."
       ],
-      "correct": [0]
+      "correct": [1]
     },
     {
-      "q": "¿Cuál es la diferencia principal entre los operadores **apertura** y **erosión** en procesamiento morfológico?",
+      "q": "Si aplicamos la transformada Top-Hat a una imagen y obtenemos una imagen completamente negra (valores en 0), ¿qué podemos concluir?",
       "opts": [
-        "La apertura elimina detalles pequeños brillantes, mientras que la erosión siempre oscurece la imagen.",
-        "La erosión elimina los bordes, mientras que la apertura aumenta los bordes.",
-        "La erosión suaviza la imagen, mientras que la apertura conserva los bordes.",
-        "La apertura y erosión tienen los mismos efectos pero con diferentes kernels."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué propiedad tiene el operador **apertura** cuando se aplica a una imagen?",
-      "opts": [
-        "Elimina detalles pequeños más brillantes que el elemento estructural, sin oscurecer la imagen.",
-        "Elimina detalles pequeños oscuros y reduce el tamaño de los objetos brillantes.",
-        "Realza las zonas de bajo contraste mientras suaviza las áreas de alto contraste.",
-        "Hace la imagen más clara y elimina objetos grandes."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cuál es el propósito de la **transformada Top-Hat**?",
-      "opts": [
-        "Resalta detalles pequeños claros sobre un fondo oscuro.",
-        "Realza detalles oscuros sobre un fondo brillante.",
-        "Suaviza la imagen y reduce el ruido.",
-        "Elimina objetos pequeños y resalta los grandes."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se define la **transformada Bottom-Hat** en el contexto del procesamiento morfológico?",
-      "opts": [
-        "Es la diferencia entre la clausura de una imagen y la imagen original, resaltando detalles oscuros sobre un fondo claro.",
-        "Es la diferencia entre la apertura y la imagen original, resaltando detalles brillantes.",
-        "Es la resta de una imagen original con su dilatación, eliminando detalles oscuros.",
-        "Resalta detalles brillantes de la imagen sin cambiar los bordes."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué efectos produce el **gradiente morfológico externo**?",
-      "opts": [
-        "Resalta las zonas claras de una imagen sobre un fondo oscuro.",
-        "Resalta las zonas oscuras de la imagen, ayudando a mejorar el contraste.",
-        "Detecta los bordes en áreas de alta intensidad.",
-        "Elimina los bordes y suaviza la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se calcula el **gradiente morfológico** de una imagen?",
-      "opts": [
-        "Se calcula como la diferencia entre la dilatación y la erosión de la imagen.",
-        "Se calcula aplicando un filtro de paso bajo a la imagen.",
-        "Es el resultado de la diferencia entre el borde interior y exterior de un objeto en la imagen.",
-        "Se obtiene mediante la media de los valores de los píxeles."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cuál es la **aplicación más común** de los **gradientes morfológicos**?",
-      "opts": [
-        "Detección de bordes y contornos en imágenes.",
-        "Segmentación de imágenes basadas en el color.",
-        "Suavizado de la imagen y eliminación de ruido.",
-        "Aumento de la resolución de la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué ocurre al aplicar la **dilatación** sobre una imagen binaria usando un elemento estructural de tamaño grande?",
-      "opts": [
-        "Las áreas blancas se expanden significativamente, eliminando los detalles pequeños.",
-        "Se suavizan los bordes y se mantiene la forma de los objetos.",
-        "Se aumenta el contraste entre las zonas claras y oscuras.",
-        "La imagen se reduce y se pierden detalles importantes."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué efectos tiene aplicar un **filtro de la media armónica** en imágenes con **ruido tipo sal y pimienta**?",
-      "opts": [
-        "El filtro de la media armónica amplifica el ruido de tipo pimienta debido a los valores extremos en los píxeles.",
-        "El filtro de la media armónica elimina el ruido de tipo pimienta mientras preserva los bordes.",
-        "Suaviza la imagen de manera efectiva, eliminando tanto el ruido como los detalles.",
-        "Aumenta el contraste y mejora la claridad de la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se aplica el operador **clausura** en la segmentación morfológica?",
-      "opts": [
-        "Primero se aplica dilatación, luego erosión para llenar huecos y pequeñas imperfecciones en las áreas oscuras.",
-        "Primero se aplica erosión, luego dilatación para eliminar detalles oscuros pequeños.",
-        "Es el proceso de suavizar la imagen, sin afectar las áreas oscuras.",
-        "Primero se aplica un filtro de paso bajo y luego un filtro de paso alto."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué implica la **apertura secuencial alternada** en procesamiento morfológico?",
-      "opts": [
-        "Aplicar la erosión seguida de dilatación con elementos estructurales de tamaño creciente.",
-        "Aplicar repetidamente la dilatación y erosión sin cambiar el tamaño del elemento estructural.",
-        "Alternar entre dilatación y erosión sin aplicar ningún filtro.",
-        "Aplicar un filtro de mediana y luego un filtro de paso alto."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "En el contexto de **segmentación por texturas**, ¿qué operador morfológico es más útil cuando los patrones de textura están superpuestos?",
-      "opts": [
-        "La apertura con un elemento estructural de tamaño adecuado para separar las texturas.",
-        "La erosión con un elemento estructural de gran tamaño.",
-        "La dilatación para aumentar las zonas de textura.",
-        "La media armónica para suavizar los detalles de textura."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué ocurre al aplicar **granulometría** en la segmentación de imágenes?",
-      "opts": [
-        "Se determina la distribución de tamaños de las partículas y se ajusta la segmentación según esos tamaños.",
-        "Se aplica un filtro de suavizado para mejorar los bordes.",
-        "Elimina todos los objetos pequeños, dejando solo los grandes.",
-        "Suaviza las texturas, pero no ayuda en la segmentación."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se define la **transformada Vers-Hat** en el procesamiento morfológico?",
-      "opts": [
-        "Combinación de las transformadas Top-Hat y Bottom-Hat para mejorar el contraste de la imagen.",
-        "Aplicación de la transformada Top-Hat para realzar los detalles oscuros.",
-        "Aplicación de la transformada Bottom-Hat para mejorar las texturas brillantes.",
-        "Un filtro que solo realza las áreas brillantes de la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se utiliza la **granulometría** para estudiar las texturas de una imagen?",
-      "opts": [
-        "Se aplican operadores de apertura y clausura con elementos estructurales de tamaños crecientes para estudiar la eliminación de estructuras.",
-        "Se usa el filtro de paso bajo para suavizar la imagen y mejorar la textura.",
-        "Se aplica el gradiente morfológico para detectar cambios de textura.",
-        "Se utiliza un filtro de la mediana para identificar las diferentes texturas."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué es un **elemento estructural plano** y cómo afecta al resultado de la **erosión** en una imagen?",
-      "opts": [
-        "Un elemento estructural plano es un kernel con todos los valores iguales a cero, y hace que la erosión reduzca la imagen sin eliminar detalles brillantes.",
-        "Un elemento estructural plano tiene un solo valor, y no tiene ningún efecto sobre la imagen.",
-        "Un elemento estructural plano suaviza la imagen y aumenta el contraste.",
-        "Un elemento estructural plano se utiliza para cambiar el tamaño de la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cuál es la **ventaja** de usar la **transformada Top-Hat** en imágenes con texturas complejas?",
-      "opts": [
-        "Resalta detalles pequeños claros sobre un fondo oscuro sin alterar el fondo.",
-        "Mejora los detalles oscuros y resalta los bordes de las texturas.",
-        "Suaviza los bordes y elimina detalles innecesarios.",
-        "Reduce el contraste de las texturas complejas."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué implica el proceso de **segmentación por texturas** usando **operadores morfológicos**?",
-      "opts": [
-        "Delimitar áreas de una imagen según los diferentes patrones de textura presentes.",
-        "Aplicar un filtro de paso bajo para suavizar las texturas.",
-        "Detectar bordes basados únicamente en la intensidad.",
-        "Eliminar áreas de la imagen que contienen texto."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "En el contexto de la **erosión morfológica**, ¿qué ocurre cuando se aplica un **elemento estructural de tamaño mayor** en una imagen con objetos pequeños?",
-      "opts": [
-        "Los objetos pequeños se eliminan más rápidamente, afectando especialmente las áreas brillantes.",
-        "Los objetos pequeños se dilatan, mientras que los grandes permanecen intactos.",
-        "La imagen se suaviza y los objetos grandes se erosionan sin cambiar su tamaño.",
-        "Los objetos pequeños se eliminan más lentamente, mientras que los grandes permanecen igual."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo afecta el **producto de convolución morfológica** a la imagen binaria cuando el kernel es de tamaño \(3 \times 3\)?",
-      "opts": [
-        "Hace que la imagen se suavice al aplicar un filtro de paso bajo.",
-        "Realza las estructuras pequeñas y suaviza los bordes.",
-        "Detecta bordes y objetos pequeños mediante el cálculo de la diferencia de intensidades.",
-        "Elimina detalles de la imagen pero preserva la resolución."
+        "El elemento estructural es demasiado pequeño.",
+        "La imagen original era completamente uniforme.",
+        "No hay detalles claros más pequeños que el elemento estructural sobre fondos oscuros locales.",
+        "Se debería haber usado Bottom-Hat en su lugar."
       ],
       "correct": [2]
     },
     {
-      "q": "¿Qué ocurre si el **elemento estructural** usado en una **operación de dilatación** tiene una forma irregular o asimétrica?",
+      "q": "Consideramos tres gradientes morfológicos: G₁ = (f ⊕ B) - (f ⊖ B), G₂ = f - (f ⊖ B), G₃ = (f ⊕ B) - f. ¿Cuál afirmación es correcta?",
       "opts": [
-        "La dilatación extenderá las zonas brillantes en la dirección de la asimetría del elemento.",
-        "La dilatación disminuirá las áreas blancas de la imagen.",
-        "No habrá efectos significativos ya que los elementos estructurales simétricos son más comunes.",
-        "La dilatación tendrá el mismo efecto que si el elemento fuera simétrico."
+        "G₁ produce bordes más gruesos que G₂ y G₃, y es menos sensible a la direccionalidad si B es simétrico.",
+        "G₂ y G₃ producen exactamente los mismos resultados si el elemento estructural es simétrico.",
+        "G₂ + G₃ = 2·G₁ siempre.",
+        "Los tres gradientes detectan exactamente los mismos bordes, solo cambia la intensidad."
       ],
       "correct": [0]
     },
     {
-      "q": "En el caso de la **apertura** y **cerradura** morfológicas, ¿cómo afecta un elemento estructural **grande** en comparación con uno pequeño?",
+      "q": "En un análisis granulométrico con fondo oscuro y partículas claras, las mayores diferencias |vᵢ - vᵢ₊₁| ocurren para radios 5 y 15. ¿Qué podemos concluir? (Pueden ser varias correctas)",
       "opts": [
-        "Un elemento grande elimina más detalles pequeños, mientras que un elemento pequeño preserva más detalles de la imagen original.",
-        "Un elemento grande hace que la imagen se haga más borrosa, mientras que un elemento pequeño mejora los detalles.",
-        "Un elemento grande resalta los bordes de la imagen mientras que uno pequeño suprime los detalles.",
-        "Un elemento grande elimina los bordes y detalles mientras que uno pequeño resalta los bordes y el contraste."
+        "La imagen contiene principalmente partículas de tamaños correspondientes a radios 5 y 15.",
+        "Deberíamos usar elementos estructurales de radios 5 y 15 para segmentar por texturas.",
+        "Los radios 5 y 15 son los menos útiles porque eliminan demasiada información.",
+        "Si aplicamos apertura con B₁₅, eliminaremos todas las partículas de radio menor a 15."
+      ],
+      "correct": [0, 1, 3]
+    },
+    {
+      "q": "¿Cuál es la expresión correcta de la transformada Vers-Hat y su función?",
+      "opts": [
+        "Vers-Hat = 2f - (f ∘ B) - (f ● B), y mejora solo estructuras claras.",
+        "Vers-Hat = f + (f - f∘B) + (f●B - f), equivalente a f + Top-Hat + Bottom-Hat.",
+        "Vers-Hat = 3f - (f ∘ B) - (f ● B), y realza tanto estructuras claras como oscuras mejorando el contraste.",
+        "Vers-Hat es equivalente a aplicar un gradiente morfológico seguido de suma con la imagen original."
+      ],
+      "correct": [2]
+    },
+    {
+      "q": "Para segmentar una imagen con círculos grandes y pequeños (ambos oscuros sobre fondo claro), aplicamos clausura y luego apertura. ¿Por qué este orden específico?",
+      "opts": [
+        "Porque la clausura suaviza primero y luego la apertura elimina ruido residual.",
+        "Porque necesitamos eliminar los círculos pequeños (clausura) y luego suavizar las regiones (apertura) antes de calcular el gradiente.",
+        "El orden es indiferente debido a la idempotencia de ambos operadores.",
+        "Porque aplicar apertura primero eliminaría los círculos grandes junto con los pequeños."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Cuál de las siguientes afirmaciones sobre idempotencia es correcta?",
+      "opts": [
+        "Erosión y dilatación son idempotentes: aplicarlas dos veces produce el mismo resultado.",
+        "Apertura y clausura son idempotentes: (f ∘ B) ∘ B = f ∘ B y (f ● B) ● B = f ● B.",
+        "El gradiente morfológico es idempotente porque combina erosión y dilatación.",
+        "Ningún operador morfológico es idempotente en imágenes en escala de grises."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Qué diferencia fundamental hay entre aplicar apertura (f ∘ B) y simplemente erosionar (f ⊖ B)?",
+      "opts": [
+        "La apertura elimina detalles pequeños brillantes sin oscurecer uniformemente la imagen.",
+        "La erosión es más rápida computacionalmente pero produce el mismo resultado.",
+        "La apertura siempre produce imágenes más suaves que la erosión.",
+        "No hay diferencia significativa, solo es una notación diferente."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Qué ocurre con el **resultado de la transformada Top-Hat** cuando se aplica a una imagen con objetos pequeños brillantes sobre un fondo oscuro?",
+      "q": "En la dilatación de una imagen en escala de grises con elemento estructural plano B≡0, ¿qué operación se realiza realmente?",
       "opts": [
-        "Resalta los objetos brillantes pequeños, realzando detalles que de otra manera pasarían desapercibidos.",
-        "Elimina todos los objetos brillantes y resalta las zonas oscuras.",
-        "Reduce la intensidad de los objetos brillantes en la imagen.",
-        "Elimina todos los objetos y áreas con bajo contraste."
+        "Un filtro de la mediana sobre la vecindad definida por B.",
+        "Un filtro del máximo sobre la vecindad definida por B.",
+        "Un filtro gaussiano con sigma proporcional al tamaño de B.",
+        "Una convolución estándar con B como kernel."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Por qué el gradiente morfológico estándar (f ⊕ B) - (f ⊖ B) es menos sensible a la direccionalidad de los bordes que otros métodos?",
+      "opts": [
+        "Porque utiliza elementos estructurales simétricos que analizan todas las direcciones por igual.",
+        "Porque promedia los resultados de múltiples direcciones.",
+        "Porque solo detecta bordes horizontales y verticales.",
+        "Porque aplica un suavizado previo que elimina la dependencia direccional."
       ],
       "correct": [0]
     },
     {
-      "q": "En el procesamiento morfológico, ¿qué ocurre cuando se **aplica un filtro de dilatación seguido de erosión** (lo que se conoce como **apertura**)?",
+      "q": "Al aplicar filtrado morfológico secuencial alternado, ¿qué implica usar elementos estructurales de tamaño creciente?",
       "opts": [
-        "El operador de apertura elimina los detalles pequeños que están presentes en el fondo.",
-        "El operador de apertura suaviza la imagen sin perder información de bordes.",
-        "El operador de apertura aumenta el contraste en la imagen.",
-        "El operador de apertura detecta bordes pero no suprime detalles."
+        "Mejora significativamente el filtrado al eliminar progresivamente estructuras de diferentes tamaños.",
+        "Reduce el tiempo de procesamiento al procesar menos píxeles.",
+        "Aumenta el contraste sin suavizar la imagen.",
+        "Permite detectar bordes a múltiples escalas simultáneamente."
       ],
       "correct": [0]
     },
     {
-      "q": "En el procesamiento morfológico, ¿cuál es la principal ventaja de la **transformación Bottom-Hat**?",
+      "q": "¿Cuál es la relación matemática correcta entre los gradientes morfológicos interno, externo y estándar?",
       "opts": [
-        "Realza los detalles oscuros pequeños y ayuda a detectar objetos sobre un fondo claro.",
-        "Elimina todos los bordes y suaviza la imagen.",
-        "Resalta detalles brillantes sobre un fondo oscuro.",
-        "Es útil para aumentar el contraste de la imagen en áreas uniformes."
+        "Gradiente interno + Gradiente externo = 2 × Gradiente estándar.",
+        "Gradiente interno + Gradiente externo = Gradiente estándar.",
+        "Gradiente interno = Gradiente externo si B es simétrico.",
+        "No existe relación matemática directa entre ellos."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "En la segmentación por texturas con círculos de diferentes tamaños, ¿por qué el tamaño del elemento estructural para clausura debe ser mayor que el círculo pequeño pero menor que el grande?",
+      "opts": [
+        "Para suavizar ambos tipos de círculos por igual.",
+        "Para eliminar (rellenar) solo los círculos pequeños manteniendo intactos los grandes.",
+        "Para aumentar el contraste entre ambos tipos de círculos.",
+        "Para detectar los bordes de ambos tipos de círculos simultáneamente."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Qué representa el Laplaciano morfológico g = (f ⊕ B) + (f ⊖ B) - 2f?",
+      "opts": [
+        "La suma de los gradientes interno y externo.",
+        "Una aproximación morfológica al operador Laplaciano clásico.",
+        "El doble del gradiente morfológico estándar.",
+        "La diferencia entre apertura y clausura."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "En el proceso de granulometría, ¿por qué calculamos |vᵢ - vᵢ₊₁| en lugar de usar directamente los valores vᵢ?",
+      "opts": [
+        "Para normalizar los resultados entre 0 y 1.",
+        "Para identificar qué tamaños de elemento estructural eliminan más detalles, revelando los tamaños predominantes de partículas.",
+        "Para reducir el efecto del ruido en las mediciones.",
+        "Para hacer el algoritmo más eficiente computacionalmente."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Cuál de estas afirmaciones sobre la transformada Bottom-Hat es correcta?",
+      "opts": [
+        "Bottom-Hat = (f ● B) - f resalta detalles oscuros sobre fondos claros locales.",
+        "Bottom-Hat = f - (f ● B) resalta detalles claros sobre fondos oscuros.",
+        "Bottom-Hat y Top-Hat producen resultados idénticos si se invierten los niveles de gris.",
+        "Bottom-Hat solo funciona con imágenes binarias."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Cómo afecta el **filtro de paso alto** en una imagen después de aplicar una **erosión**?",
+      "q": "Al aplicar dilatación morfológica a una imagen con ruido sal y pimienta, ¿qué efecto tendrá?",
       "opts": [
-        "Detecta las zonas de cambio rápido en la intensidad y las resalta.",
-        "Elimina el ruido sin afectar los detalles finos.",
-        "Suaviza la imagen y elimina todos los detalles finos.",
-        "Mejora la calidad de los bordes mientras elimina los detalles internos."
+        "Eliminará el ruido tipo sal y amplificará el ruido tipo pimienta.",
+        "Amplificará el ruido tipo sal y atenuará el ruido tipo pimienta.",
+        "Eliminará ambos tipos de ruido uniformemente.",
+        "No tendrá efecto significativo en ningún tipo de ruido."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Por qué el filtrado morfológico de suavizado se construye típicamente como (f ∘ B) ● B en lugar de solo apertura o clausura?",
+      "opts": [
+        "Porque la apertura sola elimina detalles brillantes y la clausura posterior elimina detalles oscuros, logrando un suavizado más completo.",
+        "Porque es más eficiente computacionalmente que aplicar solo uno de los operadores.",
+        "Porque así se preservan mejor los bordes de la imagen.",
+        "Porque se requiere para que el operador sea idempotente."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Qué ocurre cuando se aplica el operador **dilatación** a una imagen con ruido de tipo sal?",
+      "q": "En morfología de escala de grises, si B es un elemento estructural NO plano, ¿cómo afecta esto a la operación de erosión?",
       "opts": [
-        "La dilatación aumenta la intensidad de las áreas brillantes y puede amplificar el ruido.",
-        "La dilatación elimina las zonas de ruido al dilatar los objetos brillantes.",
-        "La dilatación elimina el ruido en las áreas oscuras de la imagen.",
-        "La dilatación disminuye la resolución de la imagen pero no afecta el ruido."
+        "La erosión se calcula como min{f(x+s, y+t) - B(s,t)} en lugar de solo min{f(x+s, y+t)}.",
+        "No tiene efecto, ya que solo importa la forma de B, no sus valores.",
+        "Hace que la erosión sea equivalente a una dilatación con -B.",
+        "Convierte la operación en una convolución estándar."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Cuál es el efecto de aplicar la **transformación Top-Hat** a una imagen con objetos pequeños oscuros sobre un fondo brillante?",
+      "q": "¿Cuál es la ventaja principal del gradiente morfológico frente a operadores como Sobel o Prewitt?",
       "opts": [
-        "Resalta los objetos oscuros pequeños sin alterar el fondo brillante.",
-        "Suaviza la imagen eliminando los objetos oscuros.",
-        "Reduce los detalles oscuros de la imagen.",
-        "Elimina todos los objetos brillantes y los reemplaza por objetos oscuros."
+        "Es más rápido de calcular computacionalmente.",
+        "Produce bordes más finos y precisos.",
+        "Depende menos de la direccionalidad de los bordes si se usan elementos estructurales simétricos.",
+        "Funciona mejor con imágenes de baja resolución."
+      ],
+      "correct": [2]
+    },
+    {
+      "q": "Si en una granulometría NO observamos picos significativos en las diferencias |vᵢ - vᵢ₊₁|, ¿qué indica esto sobre la imagen?",
+      "opts": [
+        "La imagen tiene partículas de tamaños muy uniformes.",
+        "La imagen tiene una distribución continua de tamaños sin predominancia de ningún tamaño específico.",
+        "El elemento estructural elegido no es apropiado para la imagen.",
+        "La imagen no contiene texturas analizables."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Por qué la apertura NO oscurece la imagen mientras que la erosión sí lo hace?",
+      "opts": [
+        "Porque la apertura incluye una dilatación posterior que compensa el oscurecimiento de la erosión.",
+        "Porque la apertura usa elementos estructurales más pequeños.",
+        "Porque la apertura solo se aplica a regiones específicas de la imagen.",
+        "Porque la apertura normaliza los valores después de la operación."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Cuál es la diferencia principal entre los operadores **apertura** y **clausura** en imágenes morfológicas?",
+      "q": "En el contexto de detección de bordes, ¿cuándo usarías el gradiente morfológico interno en lugar del externo?",
       "opts": [
-        "La apertura reduce el tamaño de los objetos pequeños mientras que la clausura los agranda.",
-        "La apertura elimina objetos pequeños y la clausura realza los bordes de los objetos grandes.",
-        "La apertura suaviza la imagen y la clausura realza los detalles más grandes.",
-        "La apertura preserva las zonas oscuras mientras que la clausura aumenta las áreas brillantes."
+        "Cuando quieres detectar el borde interior de los objetos (lado del objeto).",
+        "Cuando la imagen tiene más ruido en el fondo que en los objetos.",
+        "Cuando los objetos son más oscuros que el fondo.",
+        "Cuando necesitas bordes más gruesos."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Cómo afecta la **erosión** a los bordes de una imagen?",
+      "q": "¿Qué propiedad matemática NO cumplen los operadores de erosión y dilatación?",
       "opts": [
-        "La erosión hace que los bordes se vuelvan más nítidos y reduce el tamaño de los objetos.",
-        "La erosión suaviza los bordes de la imagen sin cambiar su tamaño.",
-        "La erosión preserva los bordes sin eliminar los detalles internos.",
-        "La erosión no afecta a los bordes de la imagen."
+        "Conmutatividad: (f ⊕ B₁) ⊕ B₂ = (f ⊕ B₂) ⊕ B₁.",
+        "Idempotencia: (f ⊕ B) ⊕ B = f ⊕ B.",
+        "Asociatividad con el mismo operador: f ⊕ (B₁ ⊕ B₂) = (f ⊕ B₁) ⊕ B₂.",
+        "Dualidad: la dilatación y erosión son operadores duales."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "Al segmentar texturas con círculos grandes dispersos y círculos pequeños agrupados, ¿por qué aplicamos apertura DESPUÉS de la clausura?",
+      "opts": [
+        "Para eliminar las separaciones pequeñas entre los círculos grandes después de haber eliminado los pequeños.",
+        "Para restaurar el tamaño original de los círculos grandes.",
+        "Para detectar los bordes entre las dos regiones de textura.",
+        "Para suavizar el ruido introducido por la clausura."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Qué ocurre cuando se **aplica un filtro de dilatación seguido de erosión** con un **elemento estructural pequeño** en una imagen binaria?",
+      "q": "¿Cuál es el efecto combinado de aplicar Top-Hat + Bottom-Hat en la transformada Vers-Hat?",
       "opts": [
-        "El operador de apertura elimina los detalles pequeños y suaviza la imagen.",
-        "El operador de apertura aumenta el contraste de las áreas brillantes.",
-        "El operador de apertura preserva los detalles pequeños y elimina las zonas oscuras.",
-        "El operador de apertura resalta los objetos de mayor tamaño sin afectar los pequeños."
+        "Elimina tanto detalles claros como oscuros, suavizando la imagen.",
+        "Realza detalles claros y oscuros simultáneamente, mejorando el contraste global.",
+        "Detecta bordes en ambas direcciones (interior y exterior).",
+        "Convierte la imagen en binaria resaltando todos los detalles."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Por qué en granulometría usamos aperturas sucesivas con elementos crecientes en lugar de una sola apertura grande?",
+      "opts": [
+        "Para reducir el costo computacional del procesamiento.",
+        "Para obtener información sobre la distribución completa de tamaños, no solo sobre un tamaño específico.",
+        "Para evitar perder información de los objetos más grandes.",
+        "Para hacer el algoritmo más robusto al ruido."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "Si (f ∘ B) = f para una imagen f, ¿qué podemos afirmar sobre f y B?",
+      "opts": [
+        "B es demasiado pequeño para afectar a f.",
+        "f es una imagen abierta con respecto a B, sin detalles claros menores que B sobre fondos oscuros.",
+        "f es constante en toda su extensión.",
+        "B y f tienen la misma forma y tamaño."
+      ],
+      "correct": [1]
+    },
+    {
+      "q": "¿Cuál es la principal diferencia entre filtrado morfológico y filtrado por convolución tradicional?",
+      "opts": [
+        "El filtrado morfológico usa operaciones max/min mientras que la convolución usa operaciones lineales (suma/multiplicación).",
+        "El filtrado morfológico es siempre más rápido computacionalmente.",
+        "El filtrado morfológico solo funciona con imágenes binarias.",
+        "No hay diferencia significativa, son nombres diferentes para el mismo proceso."
       ],
       "correct": [0]
     },
     {
-      "q": "¿Qué propiedad tiene el **operador de dilatación** cuando se aplica repetidamente a una imagen?",
+      "q": "En el análisis de una imagen de arroz con granos superpuestos, ¿cómo ayuda la granulometría a la segmentación?",
       "opts": [
-        "La dilatación aumenta el tamaño de los objetos brillantes pero no cambia los bordes.",
-        "La dilatación reduce el tamaño de los objetos pequeños y aumenta los grandes.",
-        "La dilatación hace que la imagen se suavice y pierda detalles.",
-        "La dilatación aumenta la cantidad de objetos oscuros en la imagen."
+        "Permite separar los granos individuales directamente.",
+        "Determina el tamaño típico de los granos, facilitando la elección de elementos estructurales adecuados para separación.",
+        "Elimina automáticamente los granos superpuestos.",
+        "Convierte la imagen en binaria para facilitar el conteo."
       ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Cómo se utiliza la **transformada Bottom-Hat** para segmentar áreas oscuras de la imagen?",
-      "opts": [
-        "La transformada Bottom-Hat resalta detalles pequeños oscuros sobre un fondo brillante.",
-        "La transformada Bottom-Hat elimina detalles brillantes de la imagen.",
-        "La transformada Bottom-Hat suaviza las áreas oscuras y mejora los bordes.",
-        "La transformada Bottom-Hat realza las áreas brillantes y reduce las zonas oscuras."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "En el procesamiento morfológico, ¿cómo se pueden **combinan operaciones de dilatación** y **erosión**?",
-      "opts": [
-        "Primero se aplica dilatación, luego erosión, para mejorar la segmentación.",
-        "Primero se aplica erosión, luego dilatación, para eliminar detalles pequeños.",
-        "Se alternan las operaciones sin un orden específico.",
-        "Solo se utiliza la dilatación sin aplicar erosión."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Qué sucede al aplicar **erosión y dilatación** de forma sucesiva en la segmentación morfológica?",
-      "opts": [
-        "Se realiza un suavizado general y se reducen los detalles pequeños.",
-        "El resultado de la erosión y dilatación es un aumento de bordes en la imagen.",
-        "Los objetos grandes se erosionan y los pequeños se dilatan.",
-        "No cambia la resolución de la imagen."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "¿Por qué es importante la elección del **elemento estructural** en la segmentación morfológica?",
-      "opts": [
-        "El elemento estructural determina el tamaño de los objetos que se eliminarán o preservarán.",
-        "El elemento estructural define los bordes visibles en la imagen.",
-        "El elemento estructural aumenta la resolución de la imagen.",
-        "El elemento estructural no afecta el resultado de la segmentación."
-      ],
-      "correct": [0]
-    },
-    {
-      "q": "En una imagen binaria, ¿qué ocurre al aplicar la **transformada de la media armónica**?",
-      "opts": [
-        "La media armónica amplifica el ruido de tipo pimienta mientras suaviza las áreas brillantes.",
-        "La media armónica elimina el ruido de tipo pimienta sin afectar los bordes.",
-        "La media armónica aumenta el contraste entre las zonas brillantes.",
-        "La media armónica reduce el ruido en las áreas oscuras."
-      ],
-      "correct": [0]
+      "correct": [1]
     }
-  ]
-
-
+];
