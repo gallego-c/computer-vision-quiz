@@ -3,7 +3,7 @@
 // DISTRIBUCIÓN EQUILIBRADA: 10 por cada opción (0,1,2,3)
 
 window.questionsByTopic = window.questionsByTopic || {};
-window.questionsByTopic.tema3_mejorado = [
+window.questionsByTopic.tema3 = [
   
   // ============ RESPUESTA CORRECTA: OPCIÓN 0 (10 preguntas) ============
   
@@ -478,4 +478,5 @@ window.questionsByTopic.tema3_mejorado = [
 // ✅ SIN redundancia
 // ✅ Basadas en contenido real del PDF
 // ✅ Requieren razonamiento y comprensión
+
 // ✅ Distractores basados en misconcepciones comunes
