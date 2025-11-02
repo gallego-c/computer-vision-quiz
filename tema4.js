@@ -2,7 +2,7 @@
 // DISTRIBUCIÓN CORREGIDA: 10 por cada opción (0,1,2,3)
 
 window.questionsByTopic = window.questionsByTopic || {};
-window.questionsByTopic.tema4_mejorado = [
+window.questionsByTopic.tema4 = [
   
   // ============ RESPUESTA CORRECTA: OPCIÓN 0 (10 preguntas) ============
   
@@ -465,4 +465,5 @@ window.questionsByTopic.tema4_mejorado = [
 // ✅ 40 preguntas únicas sin redundancia
 // ✅ Diferentes niveles de dificultad
 // ✅ Requieren razonamiento, no memorización
+
 // ✅ Distractores plausibles basados en errores comunes
