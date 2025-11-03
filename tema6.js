@@ -389,5 +389,15 @@ window.questionsByTopic.tema6 = [
         "Imagen con bajo contraste y área grande entre picos del histograma."
       ],
       "correct": [2, 3]
-    }
+    },{
+    "q": "En el detector de bordes de Canny, ¿por qué se usan dos umbrales (alto y bajo) en lugar de uno?",
+    "opts": [
+      "Para detectar bordes en dos escalas diferentes",
+      "Para aplicar histéresis: umbrales bajos extienden bordes fuertes detectados con umbral alto",
+      "Es más rápido computacionalmente con dos umbrales",
+      "Para separar bordes horizontales de verticales"
+    ],
+    "correct": [1]
+  }
+  
   ];

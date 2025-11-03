@@ -1,5 +1,6 @@
-// PREGUNTAS MEJORADAS - TEMA 4: Procesamiento de Imágenes
-// DISTRIBUCIÓN CORREGIDA: 10 por cada opción (0,1,2,3)
+// PREGUNTAS MEJORADAS - TEMA 4: Morfología Matemática
+// Basadas en: Lecture4 - PostClase.pdf
+// DISTRIBUCIÓN EQUILIBRADA: 10 por cada opción (0,1,2,3)
 
 window.questionsByTopic = window.questionsByTopic || {};
 window.questionsByTopic.tema4 = [
@@ -7,64 +8,9 @@ window.questionsByTopic.tema4 = [
   // ============ RESPUESTA CORRECTA: OPCIÓN 0 (10 preguntas) ============
   
   {
-    "q": "¿Por qué el filtro de la media armónica amplifica el efecto del ruido sal y pimienta en lugar de reducirlo?",
-    "opts": [
-      "Porque da más peso a los valores cercanos a cero (píxeles negros del ruido)",
-      "Porque solo funciona con ruido gaussiano",
-      "Porque invierte los valores de los píxeles",
-      "Porque elimina las frecuencias altas necesarias"
-    ],
-    "correct": [0]
-  },
-  
-  {
-    "q": "Si el Laplaciano de una imagen produce muchos cruces por cero falsos, ¿qué técnica reduce este problema?",
-    "opts": [
-      "Aplicar Laplaciano del Gaussiano (LoG) en lugar del Laplaciano directo",
-      "Aumentar el tamaño del kernel Laplaciano a 5×5",
-      "Usar solo la segunda derivada en dirección x",
-      "Aplicar un filtro de paso alto primero"
-    ],
-    "correct": [0]
-  },
-  
-  {
-    "q": "Un filtro tiene respuesta H(u,v) que vale 0 en el centro y 1 en las esquinas del espectro. ¿Qué tipo de filtro es?",
-    "opts": [
-      "Filtro de paso alto que resalta bordes y detalles finos",
-      "Filtro de paso bajo que suaviza la imagen",
-      "Filtro de paso banda que elimina frecuencias medias",
-      "No es un filtro válido, debe ser 1 en el centro"
-    ],
-    "correct": [0]
-  },
-  
-  {
-    "q": "Para aplicar 5 filtros gaussianos diferentes (σ₁...σ₅) a la misma imagen 4K, ¿qué estrategia es más eficiente?",
-    "opts": [
-      "Calcular FFT de la imagen una vez y multiplicar por 5 FFTs de los kernels",
-      "Aplicar los 5 filtros secuencialmente en el dominio espacial",
-      "Calcular FFT 5 veces, una por cada filtro",
-      "No hay diferencia de eficiencia entre métodos"
-    ],
-    "correct": [0]
-  },
-  
-  {
-    "q": "Un filtro de convolución tiene coeficientes que suman 0. ¿Qué característica tiene?",
-    "opts": [
-      "Es un filtro de paso alto que elimina la componente DC",
-      "Es un filtro de paso bajo que suaviza",
-      "Produce una imagen completamente negra",
-      "Es un filtro de mediana en frecuencia"
-    ],
-    "correct": [0]
-  },
-  
-  {
     "q": "Si el elemento estructural B no es simétrico respecto a su origen, ¿qué impacto tiene en la erosión?",
     "opts": [
-      "La erosión desplaza objetos según la asimetría de B",
+      "La erosión desplaza objetos según la asimetría de B (posición del origen afecta el resultado)",
       "La erosión no funciona con elementos no simétricos",
       "No tiene impacto, solo afecta la forma",
       "Convierte la erosión en dilatación"
@@ -73,12 +19,23 @@ window.questionsByTopic.tema4 = [
   },
   
   {
-    "q": "Tras aplicar un filtro de mediana a una imagen, ¿cómo cambia típicamente su histograma?",
+    "q": "Según la dualidad morfológica A⊖B = (Aᶜ⊕B̂)ᶜ, ¿qué significa esta expresión?",
     "opts": [
-      "Se vuelve más suave y con menos picos aislados",
-      "Se estira para ocupar todo el rango dinámico",
-      "Se desplaza hacia valores más oscuros",
-      "No cambia en absoluto"
+      "La erosión es el complemento de dilatar el fondo (Aᶜ) con B simétrico",
+      "La erosión y dilatación son operaciones independientes",
+      "Solo funciona si B es cuadrado",
+      "La dualidad no existe en morfología"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "Para extraer el borde de un objeto A, se usa Borde(A) = A - (A⊖B). ¿Por qué funciona?",
+    "opts": [
+      "Porque A⊖B reduce A desde los bordes; la diferencia A-(A⊖B) deja solo la capa exterior erosionada",
+      "Porque la erosión invierte los colores del borde",
+      "Porque dilata el complemento de A",
+      "Porque B debe ser circular obligatoriamente"
     ],
     "correct": [0]
   },
@@ -86,7 +43,7 @@ window.questionsByTopic.tema4 = [
   {
     "q": "¿Qué operación morfológica es equivalente a (A⊕B)\\A (dilatación menos original)?",
     "opts": [
-      "Gradiente morfológico externo que detecta el borde exterior de objetos",
+      "Gradiente morfológico externo: detecta píxeles añadidos por dilatación (borde exterior)",
       "Apertura que elimina protuberancias",
       "Erosión que reduce objetos",
       "Operación inválida, no tiene interpretación"
@@ -95,9 +52,53 @@ window.questionsByTopic.tema4 = [
   },
   
   {
-    "q": "En morfología binaria, ¿qué operación es útil para rellenar completamente el interior de objetos?",
+    "q": "En el rellenado iterativo Xₖ = (Xₖ₋₁⊕B) ∩ Aᶜ, ¿qué papel juega la intersección con Aᶜ?",
     "opts": [
-      "Cierre morfológico iterado hasta convergencia",
+      "Limita la expansión para que no cruce el borde A (solo rellena interior)",
+      "Acelera el cálculo computacional",
+      "Invierte los colores del resultado",
+      "No tiene función, se puede omitir"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "Si B tiene un número impar de píxeles sin simetría, ¿qué propiedad pierde la dilatación?",
+    "opts": [
+      "Ninguna, la dilatación es conmutativa independientemente de la simetría de B",
+      "Pierde la asociatividad",
+      "Pierde la conmutatividad",
+      "Deja de ser extensiva"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "En la transformada Hit-or-Miss A⊛B = (A⊖B₁) ∩ (Aᶜ⊖B₂), ¿qué detecta (Aᶜ⊖B₂)?",
+    "opts": [
+      "Píxeles donde B₂ encaja completamente en el fondo (píxeles blancos alrededor de la forma)",
+      "Píxeles donde B₂ encaja en el objeto A",
+      "El complemento de A sin más operaciones",
+      "No tiene función, solo se usa A⊖B₁"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "¿Por qué el operador apertura A∘B = (A⊖B)⊕B suaviza esquinas puntiagudas?",
+    "opts": [
+      "La erosión elimina esquinas que no contienen B; la dilatación no las recupera completamente",
+      "Porque B debe ser circular",
+      "Porque invierte localmente la imagen",
+      "Solo funciona si B es 3×3"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "En morfología binaria, ¿qué operación es útil para rellenar completamente el interior de objetos con huecos?",
+    "opts": [
+      "Cierre morfológico iterado hasta convergencia (rellena huecos progresivamente)",
       "Apertura morfológica única",
       "Solo erosión múltiple",
       "Gradiente morfológico"
@@ -106,12 +107,12 @@ window.questionsByTopic.tema4 = [
   },
   
   {
-    "q": "Al calcular FFT de una imagen, aplicar una ventana de Hamming en los bordes ¿qué problema mitiga?",
+    "q": "Si usamos un elemento estructural B de 5×5 vs 3×3 para extraer bordes, ¿qué diferencia hay?",
     "opts": [
-      "Reduce el efecto de discontinuidades en los bordes que causan artefactos espectrales",
-      "Aumenta la resolución en frecuencia",
-      "Elimina el ruido de la imagen",
-      "Acelera el cálculo de la FFT"
+      "B de 5×5 produce un borde más grueso porque erosiona más profundamente",
+      "No hay diferencia, el tamaño no afecta",
+      "B de 3×3 produce bordes más gruesos",
+      "B de 5×5 no puede usarse para extracción de bordes"
     ],
     "correct": [0]
   },
@@ -119,111 +120,111 @@ window.questionsByTopic.tema4 = [
   // ============ RESPUESTA CORRECTA: OPCIÓN 1 (10 preguntas) ============
   
   {
-    "q": "Si aplicamos un kernel separable 5×5 vs uno no separable del mismo tamaño a una imagen de 1000×1000 píxeles, ¿cuál es la diferencia en número de operaciones?",
+    "q": "Según las propiedades de la erosión, si K⊂L (K está contenido en L), ¿qué relación existe?",
     "opts": [
-      "El separable requiere 5,000 operaciones vs 25,000,000 del no separable",
-      "El separable requiere 10,000,000 operaciones vs 25,000,000 del no separable",
-      "Ambos requieren el mismo número de operaciones",
-      "El no separable es más eficiente con 5,000,000 operaciones"
+      "A⊖K = A⊖L siempre",
+      "A⊖L ⊂ A⊖K (erosionar con elemento mayor reduce más el conjunto)",
+      "A⊖K ⊂ A⊖L",
+      "No se puede comparar"
     ],
     "correct": [1]
   },
   
   {
-    "q": "En una imagen médica, necesitas preservar bordes finos pero eliminar ruido de tipo sal y pimienta. ¿Qué secuencia de operaciones es más apropiada?",
+    "q": "¿Por qué la erosión NO es conmutativa (A⊖B ≠ B⊖A)?",
     "opts": [
-      "Primero Gaussiano, luego Sobel",
-      "Primero mediana, luego detección de bordes con Canny",
-      "Solo filtro de la media armónica",
-      "Primero Laplaciano, luego mediana"
+      "Porque B es simétrico",
+      "Porque el origen de B afecta el resultado; la forma y posición de B importan",
+      "Porque la dilatación tampoco es conmutativa",
+      "Porque A y B deben tener el mismo tamaño"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Si un elemento estructural B tiene 5 píxeles (impar) sin simetría, ¿qué propiedad NO se cumple?",
+    "q": "Si aplicamos apertura A∘B y luego cierre (A∘B)●B, ¿qué estructuras se preservan mejor?",
     "opts": [
-      "La erosión es asociativa: (A⊖B)⊖C = A⊖(B⊕C)",
-      "A⊖B ≠ B⊖A (no es conmutativa)",
-      "La dilatación es distributiva respecto a la unión",
-      "El operador apertura es anti-extensivo"
+      "Pequeños detalles y ruido fino",
+      "Objetos grandes con bordes suavizados (apertura elimina protuberancias, cierre rellena huecos)",
+      "Solo esquinas puntiagudas",
+      "Ninguna, la imagen queda vacía"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Si A•B representa apertura y A∘B cierre, ¿qué operación (A•B)∘B realiza?",
+    "q": "En la extracción de componentes conexas Xₖ = (Xₖ₋₁⊕B) ∩ A, ¿qué garantiza la convergencia?",
     "opts": [
-      "Elimina todo el ruido de la imagen",
-      "Rellena huecos pequeños tras eliminar protuberancias",
-      "Es equivalente a solo aplicar cierre",
-      "Invierte los colores de la imagen"
+      "B debe ser circular",
+      "La intersección con A limita la expansión; Xₖ₊₁=Xₖ cuando se alcanza toda la componente",
+      "Nunca converge, es infinito",
+      "Solo converge si B es 3×3"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Si una imagen tiene líneas verticales periódicas, ¿dónde aparecen picos en su espectro de Fourier?",
+    "q": "Si dilatamos A primero con B y luego con C: (A⊕B)⊕C, ¿a qué es equivalente por asociatividad?",
     "opts": [
-      "En el eje vertical del espectro (frecuencias en dirección y)",
-      "En el eje horizontal del espectro (frecuencias en dirección x)",
-      "Uniformemente distribuidos",
-      "Solo en el origen (DC)"
+      "A⊕(B∩C)",
+      "A⊕(B⊕C), una sola dilatación con el elemento estructural combinado",
+      "A⊕B + A⊕C",
+      "No se puede simplificar"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Si ∂f/∂x es alto pero ∂f/∂y≈0 en una región, ¿qué estructura geométrica hay probablemente?",
+    "q": "En el adelgazamiento A⊗B = A - (A⊛B), ¿qué hace la resta de A⊛B?",
     "opts": [
-      "Un borde horizontal (cambio en dirección y, constante en x)",
-      "Un borde vertical (cambio en dirección x, constante en y)",
-      "Un punto aislado con cambio en todas direcciones",
-      "Una región homogénea sin bordes"
+      "Agrega píxeles al conjunto A",
+      "Elimina píxeles que coinciden con el patrón B (reduce A iterativamente)",
+      "Invierte A completamente",
+      "No tiene efecto"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Si dilatamos una imagen A con dos elementos estructurales: primero con B y luego con C, ¿qué operación única es equivalente?",
+    "q": "¿Por qué se usan 8 elementos estructurales rotados en la esqueletización morfológica?",
     "opts": [
-      "Dilatar A con (B∩C), la intersección de B y C",
-      "Dilatar A con (B⊕C), el elemento estructural suma de B y C",
-      "No se puede expresar como una sola operación",
-      "Dilatar A con (B∪C), la unión de B y C"
+      "Para acelerar el proceso únicamente",
+      "Para adelgazar en todas las direcciones (0°, 45°, 90°, 135°, etc.) hasta obtener el esqueleto",
+      "Porque 8 es el número mágico en morfología",
+      "No es necesario, con uno basta"
     ],
     "correct": [1]
   },
   
   {
-    "q": "En el detector de bordes de Canny, ¿por qué se usan dos umbrales (alto y bajo) en lugar de uno?",
+    "q": "Si A es un conjunto abierto respecto a B (A = A∘B), ¿qué significa geométricamente?",
     "opts": [
-      "Para detectar bordes en dos escalas diferentes",
-      "Para aplicar histéresis: umbrales bajos extienden bordes fuertes detectados con umbral alto",
-      "Es más rápido computacionalmente con dos umbrales",
-      "Para separar bordes horizontales de verticales"
+      "A es cerrado, no abierto",
+      "B encaja completamente en todas las regiones de A sin ser erosionadas",
+      "A tiene agujeros",
+      "A es el complemento de B"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Un kernel [-1, 0, 1] aplicado horizontalmente en una imagen, ¿qué calcula?",
+    "q": "En la transformada de distancia, ¿por qué la distancia d₄ (Manhattan) produce valores diferentes a d₂ (Euclídea)?",
     "opts": [
-      "Suavizado gaussiano en dirección horizontal",
-      "Aproximación de la derivada parcial ∂f/∂x (gradiente horizontal)",
-      "Segunda derivada en dirección x",
-      "Mediana de los valores horizontales"
+      "Porque d₄ suma diferencias absolutas |Δx|+|Δy|, mientras d₂ usa √(Δx²+Δy²)",
+      "d₄ calcula distancias absolutas |Δx|+|Δy|, dando valores mayores que d₂ en diagonales",
+      "No hay diferencia entre d₄ y d₂",
+      "d₄ solo funciona en 3D"
     ],
     "correct": [1]
   },
   
   {
-    "q": "Tras aplicar FFT 2D, modificar el espectro y aplicar IFFT, obtienes una imagen con valores complejos. ¿Qué indica?",
+    "q": "Para el filtrado morfológico (A∘B)●B que elimina ruido sal y pimienta, ¿por qué va primero apertura?",
     "opts": [
-      "La FFT se calculó incorrectamente",
-      "El espectro modificado no era hermítico simétrico",
-      "Es normal, todas las IFFT dan números complejos",
-      "La imagen original tenía valores negativos"
+      "El orden no importa",
+      "Apertura elimina ruido sal (píxeles blancos aislados), luego cierre elimina ruido pimienta (píxeles negros)",
+      "Cierre debe ir siempre primero",
+      "Solo funciona con ruido gaussiano"
     ],
     "correct": [1]
   },
@@ -231,111 +232,111 @@ window.questionsByTopic.tema4 = [
   // ============ RESPUESTA CORRECTA: OPCIÓN 2 (10 preguntas) ============
   
   {
-    "q": "Para una imagen 2048×2048, ¿cuándo es MÁS eficiente usar transformada de Fourier para convolución que el método directo?",
-    "opts": [
-      "Siempre es más eficiente en el dominio frecuencial",
-      "Nunca, el dominio espacial es más rápido",
-      "Cuando el kernel es mayor de aproximadamente 9×9",
-      "Solo cuando el kernel es separable"
-    ],
-    "correct": [2]
-  },
-  
-  {
-    "q": "¿En qué situación el filtro de Roberts (2×2) es PREFERIBLE al de Sobel (3×3)?",
-    "opts": [
-      "Cuando la imagen tiene mucho ruido gaussiano",
-      "Cuando queremos mayor precisión en la orientación del borde",
-      "Cuando necesitamos detectar cambios muy finos y tenemos poco ruido",
-      "Nunca, Sobel siempre es superior"
-    ],
-    "correct": [2]
-  },
-  
-  {
-    "q": "Tienes una imagen con píxeles muertos (siempre negros) dispersos. ¿Qué filtro es más apropiado?",
-    "opts": [
-      "Filtro gaussiano que promedia todos los píxeles",
-      "Filtro de la media armónica que enfatiza valores oscuros",
-      "Filtro de mediana que reemplaza cada píxel por el valor mediano de su vecindad",
-      "Filtro Laplaciano que detecta los píxeles muertos"
-    ],
-    "correct": [2]
-  },
-  
-  {
-    "q": "¿Cuándo es preferible un filtro adaptativo (que varía según contenido local) sobre uno fijo?",
-    "opts": [
-      "Siempre, son superiores en todos los casos",
-      "Nunca, son computacionalmente prohibitivos",
-      "Cuando la imagen tiene regiones con diferente cantidad de ruido o contenido",
-      "Solo cuando la imagen es binaria"
-    ],
-    "correct": [2]
-  },
-  
-  {
-    "q": "Para calcular la convolución de una imagen N×N con un kernel gaussiano σ grande, ¿qué técnica es más eficiente?",
-    "opts": [
-      "Convolución directa porque el kernel es pequeño",
-      "FFT 2D porque transforma todo de una vez",
-      "Convolución separable 1D porque gaussiana es separable",
-      "Todas tienen la misma eficiencia"
-    ],
-    "correct": [2]
-  },
-  
-  {
-    "q": "Después de aplicar un filtro de mediana 5×5 a una imagen con ruido sal y pimienta, ¿qué característica se ha alterado?",
-    "opts": [
-      "Se ha introducido ruido gaussiano adicional",
-      "Las áreas uniformes ahora tienen más variación",
-      "Los bordes se han difuminado ligeramente pero menos que con filtros lineales",
-      "La resolución de la imagen ha disminuido a la mitad"
-    ],
-    "correct": [2]
-  },
-  
-  {
     "q": "¿Cuál de estas afirmaciones sobre operadores morfológicos es FALSA?",
     "opts": [
       "A⊕(B∪C) = (A⊕B)∪(A⊕C) (distributiva de dilatación sobre unión)",
       "A⊖(B∩C) = (A⊖B)∩(A⊖C) (distributiva de erosión sobre intersección)",
-      "(A⊕B)⊖B = A (la dilatación seguida de erosión con el mismo elemento devuelve la imagen original)",
-      "(A⊕B)⊕C = A⊕(B⊕C) (asociativa de dilatación)"
+      "(A⊕B)⊖B = A (dilatación seguida de erosión devuelve el original)",
+      "A⊕B⊕C = A⊕(B⊕C) (asociativa de dilatación)"
     ],
     "correct": [2]
   },
   
   {
-    "q": "¿Cuál de estas propiedades NO cumple el operador de apertura morfológica A•B?",
+    "q": "¿Cuál de estas propiedades NO cumple el operador apertura A∘B?",
     "opts": [
-      "Anti-extensiva: (A•B)⊆A - la apertura siempre reduce o mantiene",
-      "Idempotente: (A•B)•B = A•B - aplicar dos veces da mismo resultado",
-      "Extensiva: A⊆(A•B) - la apertura siempre agranda la imagen",
-      "Creciente: si A⊆C entonces (A•B)⊆(C•B)"
+      "Anti-extensiva: (A∘B)⊆A (apertura reduce o mantiene)",
+      "Idempotente: (A∘B)∘B = A∘B (aplicar dos veces da igual)",
+      "Extensiva: A⊆(A∘B) (apertura agranda la imagen)",
+      "Creciente: si A⊆C entonces (A∘B)⊆(C∘B)"
     ],
     "correct": [2]
   },
   
   {
-    "q": "Si multiplicas el espectro de una imagen por un peine de impulsos periódicos, ¿qué sucede en dominio espacial?",
+    "q": "Si aplicamos la dilatación A⊕B = {(x,y) | B̂_(x,y) ∩ A ≠ ∅}, ¿qué representa B̂?",
     "opts": [
-      "La imagen se comprime horizontalmente",
-      "La imagen se suaviza",
-      "La imagen se replica periódicamente (convolución con peine → replicación)",
-      "La imagen se rota 90 grados"
+      "B trasladado",
+      "B sin cambios",
+      "B simétrico respecto al origen (B reflejado)",
+      "B complemento"
     ],
     "correct": [2]
   },
   
   {
-    "q": "¿Cuál de estos kernels NO es separable?",
+    "q": "En la propiedad A⊖B = ∩_(b∈B) A_(-b), ¿qué significa esta expresión?",
     "opts": [
-      "Gaussiano 2D con cualquier σ",
-      "Sobel en dirección x o y",
-      "Laplaciano estándar [[0,-1,0],[-1,4,-1],[0,-1,0]]",
-      "Filtro de media (promedio) de cualquier tamaño"
+      "Unión de traslaciones de A",
+      "Diferencia de A y B",
+      "Intersección de A trasladado en direcciones opuestas a cada píxel de B",
+      "Suma de A y B"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Si en una imagen binaria todos los píxeles blancos (fondo) se consideran Aᶜ, ¿qué calcula Aᶜ⊖B?",
+    "opts": [
+      "Erosión del objeto A",
+      "Dilatación del objeto A",
+      "Erosión del fondo (píxeles blancos donde B encaja completamente)",
+      "No tiene significado"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "¿Qué distancia produce círculos perfectos en la transformada de distancia?",
+    "opts": [
+      "Distancia d₄ (Manhattan)",
+      "Distancia d₈ (tablero de ajedrez)",
+      "Distancia d₂ (Euclídea)",
+      "Todas producen círculos"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Si B₁ y B₂ en Hit-or-Miss verifican B₂ᶜ=B₁, ¿qué tipo de relación tienen?",
+    "opts": [
+      "Son independientes",
+      "B₁ es el doble de B₂",
+      "Son complementarios (píxeles negros de B₁ = píxeles blancos de B₂)",
+      "Son simétricos"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "En la esqueletización, ¿cuál es la condición de parada del algoritmo iterativo?",
+    "opts": [
+      "Después de exactamente 8 iteraciones",
+      "Cuando todos los píxeles son blancos",
+      "Cuando Aₙ = Aₙ₋₁ (no hay cambios entre iteraciones consecutivas)",
+      "Nunca se detiene"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Si aplicamos apertura con B=cuadrado 3×3 a letras pequeñas en una imagen, ¿qué ocurre?",
+    "opts": [
+      "Las letras se agrandan",
+      "Las letras quedan idénticas",
+      "Las letras pueden desaparecer si son más delgadas que B",
+      "Las letras se duplican"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Para la propiedad A⊕B_t = (A⊕B)_t, ¿qué significa B_t?",
+    "opts": [
+      "B rotado t grados",
+      "B escalado por t",
+      "B trasladado en dirección t",
+      "B elevado a la potencia t"
     ],
     "correct": [2]
   },
@@ -343,56 +344,23 @@ window.questionsByTopic.tema4 = [
   // ============ RESPUESTA CORRECTA: OPCIÓN 3 (10 preguntas) ============
   
   {
-    "q": "Si aplicamos dos veces consecutivas un filtro gaussiano con σ=2, ¿qué efecto equivalente obtenemos?",
+    "q": "Si aplicamos clausura A●B = (A⊕B)⊖B, ¿qué estructuras se eliminan principalmente?",
     "opts": [
-      "Un filtro gaussiano con σ=4",
-      "Un filtro de mediana más fuerte",
-      "Un filtro de paso alto con mayor ganancia",
-      "Un filtro gaussiano con σ≈2.83 (√8)"
+      "Objetos grandes",
+      "Bordes exteriores",
+      "Esquinas puntiagudas",
+      "Pequeños agujeros (píxeles blancos) en el interior de A"
     ],
     "correct": [3]
   },
   
   {
-    "q": "Si A⊕B representa apertura y A∘B cierre, ¿qué estructuras se preservan mejor aplicando apertura seguida de cierre?",
+    "q": "¿Por qué el operador cierre morfológico (dilatación + erosión) es útil para unir objetos cercanos?",
     "opts": [
-      "Pequeños detalles y ruido fino",
-      "Esquinas y puntos aislados",
-      "Solo los bordes sin rellenar",
-      "Objetos grandes con bordes suaves"
-    ],
-    "correct": [3]
-  },
-  
-  {
-    "q": "En el operador Laplaciano del Gaussiano (LoG), ¿qué efecto tiene aumentar σ del gaussiano?",
-    "opts": [
-      "Detecta solo detalles muy finos",
-      "No afecta, solo cambia la intensidad",
-      "Convierte el filtro en paso bajo puro",
-      "Detecta bordes más gruesos e ignora detalles finos"
-    ],
-    "correct": [3]
-  },
-  
-  {
-    "q": "Si │∇f│ es grande y la dirección del gradiente es θ≈45°, ¿qué indica sobre la imagen en ese punto?",
-    "opts": [
-      "Es una zona homogénea sin cambios",
-      "Hay ruido aleatorio en esa posición",
-      "Indica un error en el cálculo del gradiente",
-      "Hay un borde diagonal con cambio rápido de intensidad"
-    ],
-    "correct": [3]
-  },
-  
-  {
-    "q": "¿Por qué el operador de cierre morfológico (dilatación + erosión) es útil para unir objetos cercanos?",
-    "opts": [
-      "La erosión elimina el espacio entre objetos primero",
+      "La erosión elimina el espacio entre objetos",
       "Solo funciona si los objetos están a menos de 1 píxel",
-      "El cierre no une objetos, solo los separa",
-      "La dilatación expande objetos hasta que se tocan, la erosión vuelve a tamaño original manteniendo la unión"
+      "El cierre separa objetos, no los une",
+      "La dilatación expande objetos hasta tocarse; erosión restaura tamaño pero mantiene la unión"
     ],
     "correct": [3]
   },
@@ -400,43 +368,21 @@ window.questionsByTopic.tema4 = [
   {
     "q": "Según la dualidad morfológica, (A⊕B)ᶜ es equivalente a:",
     "opts": [
-      "Aᶜ⊕B̌ (dilatación del complemento con B reflejado)",
-      "A⊖Bᶜ (erosión de A con el complemento de B)",
+      "Aᶜ⊕B̂ (dilatación del complemento con B reflejado)",
+      "A⊖Bᶜ (erosión de A con complemento de B)",
       "La dualidad no se aplica a dilatación",
-      "Aᶜ⊖B̌ (erosión del complemento con B reflejado)"
+      "Aᶜ⊖B̂ (erosión del complemento con B reflejado)"
     ],
     "correct": [3]
   },
   
   {
-    "q": "El Laplaciano es invariante a rotación pero sensible al ruido. ¿Qué técnica mitiga el ruido manteniendo la invarianza?",
+    "q": "Si A contiene componentes conexas aisladas, ¿qué operación extrae una componente específica conociendo un píxel (x₀,y₀)?",
     "opts": [
-      "Aplicar Laplaciano dos veces consecutivas",
-      "Usar solo derivadas de primer orden",
-      "Aumentar el umbral de detección",
-      "Laplaciano del Gaussiano (LoG) que suaviza antes de derivar"
-    ],
-    "correct": [3]
-  },
-  
-  {
-    "q": "Para imagen real, ¿qué propiedad debe cumplir su espectro de Fourier F(u,v)?",
-    "opts": [
-      "Debe ser todo real (sin parte imaginaria)",
-      "Debe tener solo frecuencias positivas",
-      "Debe ser simétrico respecto al eje vertical",
-      "Debe ser hermítico simétrico: F(u,v) = F*(-u,-v)"
-    ],
-    "correct": [3]
-  },
-  
-  {
-    "q": "Un filtro bilateral preserva bordes mientras suaviza. ¿Cómo lo logra?",
-    "opts": [
-      "Solo promedia píxeles idénticos en valor",
-      "Aplica diferentes filtros según la frecuencia local",
-      "Usa operadores morfológicos adaptativos",
-      "Considera tanto distancia espacial como similitud de intensidad al promediar"
+      "Erosión directa A⊖B",
+      "Dilatación directa A⊕B",
+      "Apertura A∘B",
+      "Reconstrucción por dilatación: X₀={(x₀,y₀)}, Xₖ=(Xₖ₋₁⊕B)∩A hasta convergencia"
     ],
     "correct": [3]
   },
@@ -447,23 +393,89 @@ window.questionsByTopic.tema4 = [
       "La velocidad de procesamiento únicamente",
       "El tipo de operación (erosión vs dilatación)",
       "No tiene ningún efecto",
-      "La posición espacial del resultado de la operación"
+      "La posición espacial del resultado (desplazamiento del objeto procesado)"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "¿Qué propiedad del operador clausura lo hace extensivo?",
+    "opts": [
+      "(A●B) = A siempre",
+      "(A●B) ⊂ A",
+      "(A●B) ∩ A = ∅",
+      "A ⊆ (A●B) (el cierre siempre contiene o agranda A)"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "Si queremos detectar esquinas en forma de 'L' en una imagen, ¿qué transformada usamos?",
+    "opts": [
+      "Erosión simple",
+      "Dilatación simple",
+      "Apertura",
+      "Hit-or-Miss con B₁ en forma de L y B₂ su complemento"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "En la transformada de distancia, ¿qué tipo de distancia produce octógonos?",
+    "opts": [
+      "d₂ (Euclídea)",
+      "d₄ (Manhattan)",
+      "Ninguna produce octógonos",
+      "d₈ (tablero de ajedrez, Chebyshev)"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "Si el elemento estructural B consiste en un solo píxel (origen), ¿qué ocurre con A⊕B y A⊖B?",
+    "opts": [
+      "A⊕B expande A, A⊖B reduce A",
+      "Ambos invierten A",
+      "Ambos eliminan A",
+      "A⊕B = A⊖B = A (no hay cambio, B no afecta)"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "Para rellenar regiones cerradas, ¿por qué se usa B en forma de cruz en lugar de cuadrado?",
+    "opts": [
+      "La cruz es más rápida computacionalmente",
+      "El cuadrado no funciona",
+      "La cruz invierte colores",
+      "La cruz garantiza conectividad-4, expandiendo de forma controlada sin saltar diagonales no deseadas"
     ],
     "correct": [3]
   }
 ];
 
 // ============================================
-// VERIFICACIÓN DE DISTRIBUCIÓN FINAL:
+// VERIFICACIÓN BASADA EN LECTURE 4:
 // ============================================
+// ✅ Operadores primarios: Erosión, Dilatación (slides 13-46)
+// ✅ Propiedades: Conmutativa, asociativa, distributiva (slides 17, 27)
+// ✅ Dualidad: A⊖B = (Aᶜ⊕B̂)ᶜ (slide 47)
+// ✅ Aplicaciones: Bordes, rellenado, componentes conexas (slides 48-64)
+// ✅ Operadores secundarios: Apertura, Clausura (slides 65-83)
+// ✅ Idempotencia: (A∘B)∘B = A∘B (slides 72-75)
+// ✅ Filtrado morfológico (slides 84-85)
+// ✅ Hit-or-Miss: Detección formas (slides 86-89)
+// ✅ Adelgazamiento y esqueletización (slides 90-98)
+// ✅ Transformada de distancia: d₂, d₄, d₈ (slides 99-101)
+//
+// DISTRIBUCIÓN FINAL VERIFICADA:
 // Opción 0: 10 preguntas (25%)
 // Opción 1: 10 preguntas (25%)
 // Opción 2: 10 preguntas (25%)
 // Opción 3: 10 preguntas (25%)
-// 
-// ✅ DISTRIBUCIÓN PERFECTAMENTE EQUILIBRADA
-// ✅ 40 preguntas únicas sin redundancia
-// ✅ Diferentes niveles de dificultad
-// ✅ Requieren razonamiento, no memorización
-
-// ✅ Distractores plausibles basados en errores comunes
+//
+// ✅ 40 preguntas completas
+// ✅ Basadas en contenido real del PDF
+// ✅ SIN redundancia
+// ✅ Requieren comprensión profunda
+// ✅ Distractores plausibles

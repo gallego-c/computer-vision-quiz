@@ -451,7 +451,219 @@ window.questionsByTopic.tema3 = [
       "Replicate o symmetric-padding evitan crear bordes artificiales oscuros"
     ],
     "correct": [3]
+  },
+  // extras
+  {
+    "q": "¿Por qué el filtro de la media armónica amplifica el efecto del ruido sal y pimienta en lugar de reducirlo?",
+    "opts": [
+      "Porque da más peso a los valores cercanos a cero (píxeles negros del ruido)",
+      "Porque solo funciona con ruido gaussiano",
+      "Porque invierte los valores de los píxeles",
+      "Porque elimina las frecuencias altas necesarias"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "Si el Laplaciano de una imagen produce muchos cruces por cero falsos, ¿qué técnica reduce este problema?",
+    "opts": [
+      "Aplicar Laplaciano del Gaussiano (LoG) en lugar del Laplaciano directo",
+      "Aumentar el tamaño del kernel Laplaciano a 5×5",
+      "Usar solo la segunda derivada en dirección x",
+      "Aplicar un filtro de paso alto primero"
+    ],
+    "correct": [0]
+  },
+  
+  
+  {
+    "q": "Para aplicar 5 filtros gaussianos diferentes (σ₁...σ₅) a la misma imagen 4K, ¿qué estrategia es más eficiente?",
+    "opts": [
+      "Calcular FFT de la imagen una vez y multiplicar por 5 FFTs de los kernels",
+      "Aplicar los 5 filtros secuencialmente en el dominio espacial",
+      "Calcular FFT 5 veces, una por cada filtro",
+      "No hay diferencia de eficiencia entre métodos"
+    ],
+    "correct": [0]
+  },
+  
+  {
+    "q": "Un filtro de convolución tiene coeficientes que suman 0. ¿Qué característica tiene?",
+    "opts": [
+      "Es un filtro de paso alto que elimina la componente DC",
+      "Es un filtro de paso bajo que suaviza",
+      "Produce una imagen completamente negra",
+      "Es un filtro de mediana en frecuencia"
+    ],
+    "correct": [0]
+  },{
+    "q": "Tras aplicar un filtro de mediana a una imagen, ¿cómo cambia típicamente su histograma?",
+    "opts": [
+      "Se vuelve más suave y con menos picos aislados",
+      "Se estira para ocupar todo el rango dinámico",
+      "Se desplaza hacia valores más oscuros",
+      "No cambia en absoluto"
+    ],
+    "correct": [0]
+  },
+  {
+    "q": "Si aplicamos un kernel separable 5×5 vs uno no separable del mismo tamaño a una imagen de 1000×1000 píxeles, ¿cuál es la diferencia en número de operaciones?",
+    "opts": [
+      "El separable requiere 5,000 operaciones vs 25,000,000 del no separable",
+      "El separable requiere 10,000,000 operaciones vs 25,000,000 del no separable",
+      "Ambos requieren el mismo número de operaciones",
+      "El no separable es más eficiente con 5,000,000 operaciones"
+    ],
+    "correct": [1]
+  },
+  
+  {
+    "q": "En una imagen médica, necesitas preservar bordes finos pero eliminar ruido de tipo sal y pimienta. ¿Qué secuencia de operaciones es más apropiada?",
+    "opts": [
+      "Primero Gaussiano, luego Sobel",
+      "Primero mediana, luego detección de bordes con Canny",
+      "Solo filtro de la media armónica",
+      "Primero Laplaciano, luego mediana"
+    ],
+    "correct": [1]
+  },
+  
+  {
+    "q": "Si ∂f/∂x es alto pero ∂f/∂y≈0 en una región, ¿qué estructura geométrica hay probablemente?",
+    "opts": [
+      "Un borde horizontal (cambio en dirección y, constante en x)",
+      "Un borde vertical (cambio en dirección x, constante en y)",
+      "Un punto aislado con cambio en todas direcciones",
+      "Una región homogénea sin bordes"
+    ],
+    "correct": [1]
+  },
+  {
+    "q": "Un kernel [-1, 0, 1] aplicado horizontalmente en una imagen, ¿qué calcula?",
+    "opts": [
+      "Suavizado gaussiano en dirección horizontal",
+      "Aproximación de la derivada parcial ∂f/∂x (gradiente horizontal)",
+      "Segunda derivada en dirección x",
+      "Mediana de los valores horizontales"
+    ],
+    "correct": [1]
+  },
+    {
+    "q": "¿En qué situación el filtro de Roberts (2×2) es PREFERIBLE al de Sobel (3×3)?",
+    "opts": [
+      "Cuando la imagen tiene mucho ruido gaussiano",
+      "Cuando queremos mayor precisión en la orientación del borde",
+      "Cuando necesitamos detectar cambios muy finos y tenemos poco ruido",
+      "Nunca, Sobel siempre es superior"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Tienes una imagen con píxeles muertos (siempre negros) dispersos. ¿Qué filtro es más apropiado?",
+    "opts": [
+      "Filtro gaussiano que promedia todos los píxeles",
+      "Filtro de la media armónica que enfatiza valores oscuros",
+      "Filtro de mediana que reemplaza cada píxel por el valor mediano de su vecindad",
+      "Filtro Laplaciano que detecta los píxeles muertos"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "¿Cuándo es preferible un filtro adaptativo (que varía según contenido local) sobre uno fijo?",
+    "opts": [
+      "Siempre, son superiores en todos los casos",
+      "Nunca, son computacionalmente prohibitivos",
+      "Cuando la imagen tiene regiones con diferente cantidad de ruido o contenido",
+      "Solo cuando la imagen es binaria"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Para calcular la convolución de una imagen N×N con un kernel gaussiano σ grande, ¿qué técnica es más eficiente?",
+    "opts": [
+      "Convolución directa porque el kernel es pequeño",
+      "FFT 2D porque transforma todo de una vez",
+      "Convolución separable 1D porque gaussiana es separable",
+      "Todas tienen la misma eficiencia"
+    ],
+    "correct": [2]
+  },
+  
+  {
+    "q": "Después de aplicar un filtro de mediana 5×5 a una imagen con ruido sal y pimienta, ¿qué característica se ha alterado?",
+    "opts": [
+      "Se ha introducido ruido gaussiano adicional",
+      "Las áreas uniformes ahora tienen más variación",
+      "Los bordes se han difuminado ligeramente pero menos que con filtros lineales",
+      "La resolución de la imagen ha disminuido a la mitad"
+    ],
+    "correct": [2]
+  },
+   {
+    "q": "¿Cuál de estos kernels NO es separable?",
+    "opts": [
+      "Gaussiano 2D con cualquier σ",
+      "Sobel en dirección x o y",
+      "Laplaciano estándar [[0,-1,0],[-1,4,-1],[0,-1,0]]",
+      "Filtro de media (promedio) de cualquier tamaño"
+    ],
+    "correct": [2]
+  },
+  {
+    "q": "Si aplicamos dos veces consecutivas un filtro gaussiano con σ=2, ¿qué efecto equivalente obtenemos?",
+    "opts": [
+      "Un filtro gaussiano con σ=4",
+      "Un filtro de mediana más fuerte",
+      "Un filtro de paso alto con mayor ganancia",
+      "Un filtro gaussiano con σ≈2.83 (√8)"
+    ],
+    "correct": [3]
+  },
+  {
+    "q": "En el operador Laplaciano del Gaussiano (LoG), ¿qué efecto tiene aumentar σ del gaussiano?",
+    "opts": [
+      "Detecta solo detalles muy finos",
+      "No afecta, solo cambia la intensidad",
+      "Convierte el filtro en paso bajo puro",
+      "Detecta bordes más gruesos e ignora detalles finos"
+    ],
+    "correct": [3]
+  },
+  
+  {
+    "q": "Si │∇f│ es grande y la dirección del gradiente es θ≈45°, ¿qué indica sobre la imagen en ese punto?",
+    "opts": [
+      "Es una zona homogénea sin cambios",
+      "Hay ruido aleatorio en esa posición",
+      "Indica un error en el cálculo del gradiente",
+      "Hay un borde diagonal con cambio rápido de intensidad"
+    ],
+    "correct": [3]
+  },
+  {
+    "q": "Un filtro bilateral preserva bordes mientras suaviza. ¿Cómo lo logra?",
+    "opts": [
+      "Solo promedia píxeles idénticos en valor",
+      "Aplica diferentes filtros según la frecuencia local",
+      "Usa operadores morfológicos adaptativos",
+      "Considera tanto distancia espacial como similitud de intensidad al promediar"
+    ],
+    "correct": [3]
+  },
+  {
+    "q": "El Laplaciano es invariante a rotación pero sensible al ruido. ¿Qué técnica mitiga el ruido manteniendo la invarianza?",
+    "opts": [
+      "Aplicar Laplaciano dos veces consecutivas",
+      "Usar solo derivadas de primer orden",
+      "Aumentar el umbral de detección",
+      "Laplaciano del Gaussiano (LoG) que suaviza antes de derivar"
+    ],
+    "correct": [3]
   }
+
 ];
 
 // ============================================
@@ -478,5 +690,4 @@ window.questionsByTopic.tema3 = [
 // ✅ SIN redundancia
 // ✅ Basadas en contenido real del PDF
 // ✅ Requieren razonamiento y comprensión
-
 // ✅ Distractores basados en misconcepciones comunes
